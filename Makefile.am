@@ -10,13 +10,18 @@ timedrun_SOURCES = timedrun.c
 
 memcached_SOURCES = memcached.c memcached.h \
                     hash.c hash.h \
+                    jenkins_hash.c jenkins_hash.h \
+                    murmur3_hash.c murmur3_hash.h \
                     slabs.c slabs.h \
                     items.c items.h \
                     assoc.c assoc.h \
                     thread.c daemon.c \
                     stats.c stats.h \
                     util.c util.h \
-                    trace.h cache.h sasl_defs.h
+                    trace.h cache.h sasl_defs.h \
+                    bipbuffer.c bipbuffer.h \
+                    logger.c logger.h \
+                    crawler.c crawler.h
 
 if BUILD_CACHE
 memcached_SOURCES += cache.c
@@ -69,7 +74,7 @@ memcached_debug_dtrace.o: $(memcached_debug_OBJECTS)
 
 SUBDIRS = doc
 DIST_DIRS = scripts
-EXTRA_DIST = doc scripts t memcached.spec memcached_dtrace.d version.m4 README.md
+EXTRA_DIST = doc scripts t memcached.spec memcached_dtrace.d version.m4 README.md LICENSE.bipbuffer
 
 MOSTLYCLEANFILES = *.gcov *.gcno *.gcda *.tcov
 
